@@ -3,6 +3,7 @@ package com.topic3.android.reddit.appdrawer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -67,7 +68,17 @@ private fun AppDrawerHeader() {
       contentDescription = stringResource(
         id = R.string.account)
     )
-  }
+    Text(
+      text = stringResource(id = R.string.default_username),
+      color = MaterialTheme.colors.primaryVariant
+    )
+  } // конец Column
+  Divider(
+    color = MaterialTheme.colors.onSurface.copy(alpha = .2f),
+    modifier = Modifier.padding(
+      start = 16.dp, end = 16.dp, top = 16.dp
+    )
+  )
 }
 
 @Composable
