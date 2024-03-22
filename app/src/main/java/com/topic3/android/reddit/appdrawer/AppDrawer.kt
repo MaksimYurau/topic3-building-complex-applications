@@ -84,6 +84,7 @@ private fun AppDrawerHeader() {
       text = stringResource(id = R.string.default_username),
       color = MaterialTheme.colors.primaryVariant
     )
+    ProfileInfo()
   } // конец Column
   Divider(
     color = MaterialTheme.colors.onSurface.copy(alpha = .2f),
@@ -128,7 +129,7 @@ fun ProfileInfo(modifier: Modifier = Modifier) {
       R.string.reddit_age,
       modifier = modifier.constrainAs(ageItem) {
           start.linkTo(divider.end)
-        centerVerticallyTo(parent)
+          centerVerticallyTo(parent)
       })
   }
 }
@@ -166,9 +167,9 @@ private fun ProfileInfoItem(
       modifier = itemModifier
         .padding(start = 8.dp)
         .constrainAs(amountRef) {
-          top.linkTo(iconRef.top)
+          top.linkTo(amountRef.top)
           start.linkTo(iconRef.end)
-          bottom.linkTo(titleRef.top)
+          bottom.linkTo(iconRef.top)
         }
     )
 
@@ -178,10 +179,10 @@ private fun ProfileInfoItem(
       fontSize = 10.sp,
       modifier = itemModifier
         .padding(start = 8.dp)
-        .constrainAs(amountRef) {
-          top.linkTo(iconRef.bottom)
+        .constrainAs(titleRef) {
+          top.linkTo(amountRef.bottom)
           start.linkTo(iconRef.end)
-          bottom.linkTo(titleRef.bottom)
+          bottom.linkTo(iconRef.bottom)
         }
     )
   }
@@ -256,7 +257,7 @@ private fun changeTheme() {
   RedditThemeSettings.isInDarkTheme.value = RedditThemeSettings.isInDarkTheme.value.not()
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun ProfileInfoItemPreview() {
   ProfileInfoItem(
