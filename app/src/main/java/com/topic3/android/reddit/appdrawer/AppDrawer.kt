@@ -22,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
@@ -281,6 +282,29 @@ private fun AppDrawerFooter(modifier: Modifier = Modifier) {
   ) {
     val colors = MaterialTheme.colors
     val (settingsImage, settingsText, darkModeButton) = createRefs()
+    Icon(
+      modifier = modifier.constrainAs(settingsImage) {
+        start.linkTo(parent.start)
+        bottom.linkTo(parent.bottom)
+      },
+      imageVector = Icons.Default.Settings,
+      contentDescription = stringResource(id = R.string.settings
+      ),
+      tint = colors.primaryVariant
+    )
+    Text(
+      fontSize = 10.sp,
+      text = stringResource(id = R.string.settings),
+      style = MaterialTheme.typography.body2,
+      color = colors.primaryVariant,
+      modifier = modifier
+        .padding(start = 16.dp)
+        .constrainAs(settingsText) {
+          start.linkTo(settingsImage.end)
+          centerVerticallyTo(settingsImage)
+        }
+    )
+
   }
 }
 
