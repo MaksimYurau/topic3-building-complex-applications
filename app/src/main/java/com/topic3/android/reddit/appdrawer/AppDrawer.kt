@@ -3,6 +3,7 @@ package com.topic3.android.reddit.appdrawer
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,6 +34,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -305,6 +307,17 @@ private fun AppDrawerFooter(modifier: Modifier = Modifier) {
         }
     )
 
+    Icon(
+      imageVector = ImageVector.vectorResource(id = R.drawable.ic_moon),
+      contentDescription = stringResource(id = R.string.change_theme),
+      modifier = modifier
+        .clickable(onClick = { changeTheme() } )
+        .constrainAs(darkModeButton) {
+          end.linkTo(parent.end)
+          bottom.linkTo(settingsImage.bottom)
+        },
+      tint = colors.primaryVariant
+    )
   }
 }
 
